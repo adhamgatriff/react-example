@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('Back-end') {
             agent {
-                docker { image 'node:7-alpine' }
+                docker { 
+                  image 'node:7-alpine' 
+                  args '-p 3000:3000 --rm=False' 
+                }
             }
             steps {
                 sh 'node --version'
@@ -11,11 +14,13 @@ pipeline {
         }
         stage('Front-end') {
             agent {
-                docker { image 'node:7-alpine' }
+                docker { 
+                  image 'node:7-alpine'
+                  args '-p 3000:3000 --rm=False' 
+                }
             }
             steps {
                 sh 'node --version'
             }
         }
     }
-}
