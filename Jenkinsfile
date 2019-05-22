@@ -5,7 +5,7 @@ pipeline {
             agent {
                 docker { 
                   image 'node:7-alpine' 
-                  args '-p 3000:3000 --rm=False' 
+                  args '-p 3000:3000 ' 
                 }
             }
             steps {
@@ -16,7 +16,7 @@ pipeline {
             agent {
                 docker { 
                   image 'node:7-alpine'
-                  args '-p 3000:3000 --rm=False' 
+                  args '-p 3000:3000' 
                 }
             }
             steps {
