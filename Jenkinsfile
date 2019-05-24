@@ -6,11 +6,7 @@ pipeline {
         sh 'docker --version'
       }
     }
-    stage('test') {
-      steps {
-        sh 'chown -R root:jenkins target/'
-      }
-    }
+
     stage('build') {
       steps {
         script {
