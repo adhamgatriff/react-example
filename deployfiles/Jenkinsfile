@@ -1,0 +1,28 @@
+pipeline {
+  agent any
+  tools {
+    nodejs "11.14.0"
+  }
+  stages {
+		stage('node test') {
+      steps {
+        sh 'node -v'
+      }
+    }
+    stage('docker test') {
+      steps {
+        sh 'docker --version'
+      }
+    }
+    stage('build') {
+      steps {
+        docker.build('365frontend')
+      }
+    }
+    stage('deploy') {
+      steps {
+        sh './deploy.sh'
+      }
+    }
+  }
+}
