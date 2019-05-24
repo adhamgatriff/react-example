@@ -17,7 +17,7 @@ pipeline {
 
     stage('deploy') {
       steps {
-        sh './deploy.sh'
+        sh 'sudo ./deploy.sh'
       }
     }
   }
