@@ -1,14 +1,6 @@
 pipeline {
   agent any
-  tools {
-    nodejs "11.14.0"
-  }
   stages {
-		stage('node test') {
-      steps {
-        sh 'node -v'
-      }
-    }
     stage('docker test') {
       steps {
         sh 'docker --version'
@@ -17,7 +9,7 @@ pipeline {
     stage('build') {
       steps {
         script {
-          docker.build("365frontend", "../")
+          docker.build("365frontend")
         }
       }
     }
