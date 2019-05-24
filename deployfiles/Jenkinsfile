@@ -16,7 +16,9 @@ pipeline {
     }
     stage('build') {
       steps {
-        docker.build('365frontend')
+         script {
+          docker.build('365frontend')
+        }
       }
     }
     stage('deploy') {
