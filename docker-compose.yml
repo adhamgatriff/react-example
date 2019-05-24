@@ -4,5 +4,5 @@ services:
   frontend:
     container_name: 365frontend
     build: .
-    port: 
+    ports: 
       - 3000:80
