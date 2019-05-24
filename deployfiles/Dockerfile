@@ -1,10 +1,13 @@
 FROM node:12.3-alpine
-USER root
-RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh
 
-
-WORKDIR /srv/app
+WORKDIR /usr/src/app
+COPY . ./
 RUN npm install
-RUN npm run dev
-EXPOSE 3000
+RUN npm run build
+
+
+# 
+FROM nginx:1.12-alpine
+COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
